@@ -1,0 +1,20 @@
+<h2>Post data</h2>
+<div>
+  <button [routerLink]="['/user']" routerLinkActive="router-link-active">
+    Go back to user
+  </button>
+</div>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>UserId</th>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+  <tr *ngFor="let item of (data$ | async)!.post">
+    <td>{{ item.id }}</td>
+    <td>{{ item.userId }}</td>
+    <td>{{ item.title }}</td>
+    <td>{{ item.body }}</td>
+  </tr>
+</table>
