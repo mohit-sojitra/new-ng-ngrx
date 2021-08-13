@@ -1,3 +1,9 @@
+# USED CONCEPTS
+EFFECTS
+REDUCER
+STATE
+ACTION
+
 # AngularNgrx
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
