@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getPostAction, getUserAction } from '../demo.action';
-import { state } from '../demo.reducer';
+import { AppState, IState } from '../app.state';
+import { getPostAction } from '../demo.action';
 
 @Component({
   selector: 'app-post',
@@ -10,9 +10,9 @@ import { state } from '../demo.reducer';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  data$: Observable<state>;
-  constructor(private store: Store<{ demoStore: state }>) {
-    this.data$ = store.select('demoStore');
+  data$: Observable<IState>;
+  constructor(private store: Store<AppState>) {
+    this.data$ = store.select('demoState');
     this.store.dispatch(getPostAction());
   }
 }

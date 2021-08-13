@@ -1,29 +1,19 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { addDataAction, savePostsAction, saveUsersAction } from './demo.action';
-import { IPost } from './model/post.mode';
-import { IUser } from './model/user.model';
+import { IState } from './app.state';
+import { savePostsAction, saveUsersAction } from './demo.action';
 
-export interface state {
-  data: string[];
-  user: IUser[];
-  post: IPost[];
-}
-
-const initialState: state = { data: ['a', 'b'], user: [] , post:[]};
+const initialState: IState = { user: [], post: [] };
 
 const reducer = createReducer(
   initialState,
-  on(addDataAction, (state: state, action: any) => {
-    return { ...state, data: [...state.data, action.payload] };
-  }),
-  on(saveUsersAction, (state: state, action: any) => {
+  on(saveUsersAction, (state: IState, action: any) => {
     return { ...state, user: action.payload };
   }),
-  on(savePostsAction, (state: state, action: any) => {
+  on(savePostsAction, (state: IState, action: any) => {
     return { ...state, post: action.payload };
   })
 );
 
-export function demoReducer(state = initialState, action: Action) {
+export function demoReducer(state = initialState, action: Action): IState {
   return reducer(state, action);
 }

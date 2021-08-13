@@ -13,27 +13,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
+import { appReducer } from './app.state';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    UserComponent,
-    PostComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, UserComponent, PostComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({demoStore:demoReducer}),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
-    EffectsModule.forRoot([DemoEffects])
+    EffectsModule.forRoot([DemoEffects]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
